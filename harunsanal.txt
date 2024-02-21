@@ -1,0 +1,25 @@
+import Map "mo:base/HashMap";
+import Text "mo:base/Text";
+
+actor {
+  type Name = Text;
+  type Phone = Text;
+  type Entry = {
+    desc: Text;
+    phone: Phone;
+  };
+
+
+  let telefondefteri = Map.HashMap<Name, Entry>(0, Text.equal, Text.hash);
+
+  public func ekle(name : Name, entry: Entry): async () {
+    telefondefteri.put(name,entry);
+  };
+
+  public query func bunaBak(name : Name) : async ?Entry {
+   telefondefteri.get(name);
+  };
+
+
+
+};
